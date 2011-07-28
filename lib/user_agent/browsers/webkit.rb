@@ -82,6 +82,8 @@ class UserAgent
         'Symbian'             
         elsif application.comment[0] =~ /webOS/
           'webOS'
+        elsif application.comment[0] =~ /Windows/
+          "Windows"
         else
           application.comment[0]
         end
@@ -100,8 +102,10 @@ class UserAgent
           "Palm #{last.product} #{last.version}"
         elsif platform == 'Symbian'
           application.comment[0]
+        elsif application.comment[0] =~ /Windows NT/
+          OperatingSystems.normalize_os(application.comment[0])
         else
-          OperatingSystems.normalize_os(application.comment[2])
+          OperatingSystems.normalize_os(application.comment[2] || application.comment[1] || application.comment[0])
         end
       end
 

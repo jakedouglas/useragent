@@ -1020,6 +1020,67 @@ describe "UserAgent: 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; en-US) A
   end
 end
 
+describe "UserAgent: 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30'" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30")
+  end
+
+  it "should return 'Chrome' as its browser" do
+    @useragent.browser.should == "Chrome"
+  end
+
+  it "should return '534.30' as its build" do
+    @useragent.build.should == "534.30"
+  end
+
+  it "should return '12.0.742.122' as its version" do
+    @useragent.version.should == "12.0.742.122"
+  end
+
+  it "should return '534.30' as its webkit version" do
+    @useragent.webkit.version.should == "534.30"
+  end
+
+  it "should return 'Windows' as its platform" do
+    @useragent.platform.should == "Windows"
+  end
+
+  it "should return 'Windows 7' as its os" do
+    @useragent.os.should == "Windows 7"
+  end
+end
+
+describe "UserAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30'" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30")
+  end
+
+  it "should return 'Chrome' as its browser" do
+    @useragent.browser.should == "Chrome"
+  end
+
+  it "should return '534.30' as its build" do
+    @useragent.build.should == "534.30"
+  end
+
+  it "should return '12.0.742.122' as its version" do
+    @useragent.version.should == "12.0.742.122"
+  end
+
+  it "should return '534.30' as its webkit version" do
+    @useragent.webkit.version.should == "534.30"
+  end
+
+  it "should return 'Macintosh' as its platform" do
+    @useragent.platform.should == "Macintosh"
+  end
+
+  it "should return 'Intel Mac OS X 10_6_8' as its os" do
+    @useragent.os.should == "Intel Mac OS X 10_6_8"
+  end
+end
+
+
 describe "UserAgent: 'Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHTML, like Gecko) Version/1.0 Safari/532.2 Pre/1.1'" do
   before do
     @useragent = UserAgent.parse("Mozilla/5.0 (webOS/1.4.0; U; en-US) AppleWebKit/532.2 (KHTML, like Gecko) Version/1.0 Safari/532.2 Pre/1.1")

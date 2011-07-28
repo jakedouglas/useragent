@@ -332,3 +332,27 @@ describe 'UserAgent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1
     @useragent.localization.should == "en-US"
   end
 end
+
+describe 'UserAgent: Mozilla/5.0 (Windows NT 6.0; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0' do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (Windows NT 6.0; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0")
+  end
+
+  it_should_behave_like "Firefox browser"
+
+  it "should return '5.0' as its version" do
+    @useragent.version.should == "5.0"
+  end
+
+  it "should return '20100101' as its gecko version" do
+    @useragent.gecko.version.should == "20100101"
+  end
+
+  it "should return 'Windows' as its platform" do
+    @useragent.platform.should == "Windows"
+  end
+
+  it "should return 'Windows Vista' as its os" do
+    @useragent.os.should == "Windows Vista"
+  end
+end
